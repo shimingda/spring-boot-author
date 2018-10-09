@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 	@RequestMapping("/test")
 	public String test(){
+		String s="";
+		s.substring(2);
 		return "hello world";
 	}
 }
