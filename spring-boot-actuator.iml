@@ -114,5 +114,8 @@
     <orderEntry type="library" name="Maven: com.alibaba:fastjson:1.2.47" level="project" />
     <orderEntry type="library" name="Maven: com.sun.mail:javax.mail:1.6.0" level="project" />
     <orderEntry type="library" name="Maven: javax.activation:activation:1.1" level="project" />
+    <orderEntry type="library" name="Maven: net.bull.javamelody:javamelody-spring-boot-starter:1.74.0" level="project" />
+    <orderEntry type="library" name="Maven: net.bull.javamelody:javamelody-core:1.74.0" level="project" />
+    <orderEntry type="library" name="Maven: org.jrobin:jrobin:1.5.9" level="project" />
   </component>
 </module>

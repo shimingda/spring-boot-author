@@ -5,8 +5,9 @@ import com.ds.demo.email.MailSenderInfo;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
+
+import java.util.Random;
 
 /**
  * 全局异常处理
@@ -25,8 +26,10 @@ public class GlobalExceptionHandler {
         MailSenderInfo mailInfo = new MailSenderInfo();
         mailInfo.setToAddress("shimingda@deepsense.cn");       // 设置接受者邮箱地址
         mailInfo.setSubject("异常通知");
-        String content =ex.getMessage();
-        mailInfo.setContent(content);
+        StringBuffer buffer=new StringBuffer();
+        buffer.append("<H1>异常信息：").append(Math.random()).append("</H1>");
+
+        mailInfo.setContent(buffer.toString());
         String[] files = {"D:/ftp/image/3.png"};
         JavaMail.sendHtmlMail(mailInfo,files); // 发送html格式
 
