@@ -21,7 +21,7 @@ public class GetTime {
 	private final Map<String,Object> message =(Map<String, Object>) new HashMap();
     private GetTime(){
 	 this.message.put("当前时间", new Date());
-	 this.message.put("我是", "史明达");
+	 this.message.put("我是", "Simon");
 	 this.message.put("111", "222");
     } 
     @ReadOperation  

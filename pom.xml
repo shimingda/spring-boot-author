@@ -16,7 +16,13 @@
 	<name>spring-boot-actuator Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
-	
+		<!--监控客户端-->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-starter-client</artifactId>
+			<version>2.0.0</version>
+		</dependency>
+
 		<dependency>
 		  <groupId>org.apache.commons</groupId>
 		  <artifactId>commons-lang3</artifactId>
@@ -56,10 +62,12 @@
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
 		</dependency>
+		<!-- 在管理界面中与 JMX-beans 进行交互所需要被依赖的 JAR -->
 		<dependency>
 			<groupId>org.jolokia</groupId>
 			<artifactId>jolokia-core</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>

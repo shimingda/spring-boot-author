@@ -11,7 +11,8 @@ import org.springframework.boot.web.servlet.ServletComponentScan;
  *
  * 程序入口
  */
-@SpringBootApplication  
+
+@SpringBootApplication
 @ServletComponentScan
 public class SpringActuatorApplication {
 	public static void main(String[] args) {

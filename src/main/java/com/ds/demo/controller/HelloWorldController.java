@@ -13,6 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 	@RequestMapping("/test")
 	public String test(){
+		double random=Math.random();
+		return  String.valueOf(random);
+	}
+	@RequestMapping("/exception")
+	public String exception(){
 		String s="";
 		s.substring(2);
 		return "hello world";

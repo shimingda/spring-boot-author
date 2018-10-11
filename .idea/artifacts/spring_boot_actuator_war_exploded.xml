@@ -7,6 +7,8 @@
           <element id="module-output" name="spring-boot-actuator" />
         </element>
         <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: de.codecentric:spring-boot-admin-starter-client:2.0.0" />
+          <element id="library" level="project" name="Maven: de.codecentric:spring-boot-admin-client:2.0.0" />
           <element id="library" level="project" name="Maven: org.apache.commons:commons-lang3:3.7" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot-starter:2.0.2.RELEASE" />
           <element id="library" level="project" name="Maven: org.springframework.boot:spring-boot:2.0.2.RELEASE" />
