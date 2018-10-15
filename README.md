@@ -5,7 +5,9 @@
 ​	actuator模块测试demo，项目非工程化，功能基础，仅仅为了测试监控内容，前后端传值json形式，restful接口。
 
 ##依赖模块 
-
+druid监控 http://localhost:9999/druid/api.html
+系统性能监控 http://localhost:9999/monitoring
+系统健康以及自定义监控 http://localhost:8888/actuator
 ###springboot依赖
 
 1. spring-boot-starter-parent
@@ -69,6 +71,7 @@ spring.datasource.connectionProperties=druid.stat.mergeSql=true;druid.stat.slowS
 ### actuator 提供的端点信息
 
 > 监控检查url：  http://localhost:8888/ + 端点
+
 
 | 端点           | 描述                                                         | HTTP 方法 |
 | -------------- | ------------------------------------------------------------ | --------- |

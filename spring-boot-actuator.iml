@@ -119,5 +119,23 @@
     <orderEntry type="library" name="Maven: net.bull.javamelody:javamelody-spring-boot-starter:1.74.0" level="project" />
     <orderEntry type="library" name="Maven: net.bull.javamelody:javamelody-core:1.74.0" level="project" />
     <orderEntry type="library" name="Maven: org.jrobin:jrobin:1.5.9" level="project" />
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES />
+        <JAVADOC />
+        <SOURCES>
+          <root url="jar://$USER_HOME$/Desktop/新平台/新建文件夹/dingtalk-chatbot-sdk-0.9.0-SNAPSHOT-sources.jar!/" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library">
+      <library>
+        <CLASSES>
+          <root url="jar://$USER_HOME$/Desktop/新平台/新建文件夹/dingtalk-chatbot-sdk-0.9.0-SNAPSHOT.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>
