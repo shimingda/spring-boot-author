@@ -8,6 +8,7 @@
 druid监控 http://localhost:9999/druid/api.html
 系统性能监控 http://localhost:9999/monitoring
 系统健康以及自定义监控 http://localhost:8888/actuator
+自定义节点获取  http://localhost:8888/actuator/person/ignored?person=mike
 ###springboot依赖
 
 1. spring-boot-starter-parent

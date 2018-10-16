@@ -8,14 +8,14 @@ import com.ds.demo.exception.ExceptionInfo;
 public class TestEmail {
     public static void main(String[] args) {
         JavaMail javaMail=new JavaMail();
-        //测试1：发送邮件以文本格式
-//        try {
-//            String s="";
-//            s.substring(2);
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            javaMail.sendExceptionMail(new ExceptionInfo( null,"get()", "123",e));
-//        }
+//        测试1：发送邮件以文本格式
+        try {
+            String s="";
+            s.substring(2);
+        } catch (Exception e) {
+            e.printStackTrace();
+            javaMail.sendExceptionMail(new ExceptionInfo( null,"get()", "123",e));
+        }
 
         //测试2：发送邮件以html格式
 //        MailSenderInfo mailInfo = new MailSenderInfo();
