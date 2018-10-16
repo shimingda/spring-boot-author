@@ -15,6 +15,10 @@ public class SystemUtil {
 
     }
 
+    /**
+     * 获得ip地址
+     * @return
+     */
     public static String getIpAddress(){
         InetAddress address = null;
         try {

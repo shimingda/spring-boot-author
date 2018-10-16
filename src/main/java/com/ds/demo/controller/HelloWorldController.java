@@ -1,6 +1,6 @@
 package com.ds.demo.controller;
 
-import com.ds.demo.check.CPU;
+import com.ds.demo.check.CPUInfo;
 import com.ds.demo.utils.StringUtil;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class HelloWorldController {
 	@RequestMapping("/test")
 	public String test(){
-		double temp=CPU.getTemp();
+		double temp=CPUInfo.getTemp();
 		String tempStr=String.format("%.1f", temp / 1000);
 		return StringUtil.getTempUnit(tempStr);
 	}

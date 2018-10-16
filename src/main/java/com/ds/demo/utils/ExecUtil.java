@@ -13,7 +13,6 @@ public class ExecUtil {
     public static String execUtil(String cmd) {
         String result = "";
         try {
-//            String[] cmd = new String[]{"cat", "/sys/class/thermal/thermal_zone0/temp"};
             Process ps = Runtime.getRuntime().exec(cmd);
             ps.waitFor();
             BufferedReader br = new BufferedReader(new InputStreamReader(ps.getInputStream()));

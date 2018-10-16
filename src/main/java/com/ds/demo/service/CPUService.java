@@ -1,6 +1,6 @@
 package com.ds.demo.service;
 
-import com.ds.demo.check.CPU;
+import com.ds.demo.check.CPUInfo;
 import com.ds.demo.constant.WarningConstant;
 import com.ds.demo.utils.ExecUtil;
 import com.ds.demo.utils.SendMsg;
@@ -22,8 +22,8 @@ public class CPUService {
     private static final Logger logger=LoggerFactory.getLogger(CPUService.class);
     public static void checkTemp() throws IOException {
 
-//        double temp= CPU.getTemp();
-        double temp= 86;
+        double temp= CPUInfo.getTemp();
+//        double temp= 86;
         /**
          * 未达到预警范围
          */
@@ -58,9 +58,4 @@ public class CPUService {
             return ;
         }
     }
-
-    public static void main(String[] args) throws IOException {
-        checkTemp();
-    }
-
 }
