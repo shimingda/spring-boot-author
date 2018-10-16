@@ -1,15 +1,20 @@
 package com.ds.demo.service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
 import org.springframework.boot.actuate.endpoint.annotation.Selector;
 import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
+import org.springframework.boot.actuate.endpoint.web.EndpointMapping;
+import org.springframework.boot.actuate.endpoint.web.EndpointMediaTypes;
+import org.springframework.boot.actuate.endpoint.web.ExposableWebEndpoint;
+import org.springframework.boot.actuate.endpoint.web.annotation.WebEndpoint;
+import org.springframework.boot.actuate.web.mappings.MappingDescriptionProvider;
+import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Component;
+import org.springframework.web.cors.CorsConfiguration;
+
 /**
  * 
  * @author Simon
@@ -17,47 +22,30 @@ import org.springframework.stereotype.Component;
  *
  *	自定义监视端点
  */
-@Endpoint(id = "person")  
-@Component  
-public class PersonEndpoint {  
-  
-    private final Map<String, Person> people = new HashMap<>();  
-   
-    PersonEndpoint() {  
-        this.people.put("我名字", new Person("Simon"));  
-        this.people.put("树的名字", new Person("白杨"));  
-        this.people.put("花的名字", new Person("绿萝"));  
-        
-    }  
-  
-    @ReadOperation  
-    public List<Person> getAll() {  
-        return new ArrayList<>(this.people.values());  
-    }  
-  
-    @ReadOperation  
-    public Person getPerson(@Selector String person) {  
-        return this.people.get(person);  
-    }  
-  
-    @WriteOperation  
-    public void updatePerson(@Selector String name, String person) {  
-        this.people.put(name, new Person(person));  
-    }  
-  
-    public static class Person {  
-        private String name;  
-  
-        Person(String name) {  
-            this.name = name;  
-        }  
-  
-        public String getName() {  
-            return this.name;  
-        }  
-  
-        public void setName(String name) {  
-            this.name = name;  
-        }  
-    }  
-}  
+@Endpoint(id = "person")
+@Component
+public class PersonEndpoint {
+    private final Map<String, Person> people = new HashMap<>();
+
+    PersonEndpoint() {
+        this.people.put("Simon", new Person("Michael Simon"));
+        this.people.put("Alan", new Person("Rowena Alan"));
+        this.people.put("Bryant", new Person("Barry Bryant"));
+    }
+
+    @ReadOperation
+    public Map<String, Person> getAll() {
+        return people;
+    }
+
+    @ReadOperation
+    public Person getPerson(@Selector String person) {
+        return this.people.get(person);
+    }
+
+    @WriteOperation
+    public void updatePerson(@Selector String name, String person) {
+        this.people.put(name, new Person(person));
+    }
+
+}
