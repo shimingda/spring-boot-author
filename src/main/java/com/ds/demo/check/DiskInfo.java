@@ -3,8 +3,10 @@ package com.ds.demo.check;
 import org.hyperic.sigar.FileSystem;
 import org.hyperic.sigar.FileSystemUsage;
 import org.hyperic.sigar.Sigar;
+import org.hyperic.sigar.SigarException;
 
-import java.io.File;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Simon
@@ -15,7 +17,35 @@ public class DiskInfo {
     private DiskInfo(){
 
     }
+    public static Map<Double,String> getUseageRate(){
+        Map<Double,String> map=new HashMap<>();
+        Sigar sigar = new Sigar();
+        FileSystem fslist[] = new FileSystem[0];
 
+        try {
+            fslist = sigar.getFileSystemList();
+        } catch (SigarException e) {
+            e.printStackTrace();
+            return null;
+        }
+
+        for (int i = 0; i < fslist.length; i++) {
+            FileSystem fs = fslist[i];
+            // 分区的盘符名称
+            String devName=fs.getDevName();
+            FileSystemUsage usage = null;
+            try {
+
+                usage = sigar.getFileSystemUsage(fs.getDirName());
+            }catch (Exception e){
+                continue;
+            }
+            double usePercent = usage.getUsePercent();
+            map.put(usePercent,devName);
+
+        }
+        return map;
+    }
     /**
      * 磁盘详情
      * @throws Exception

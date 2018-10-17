@@ -11,6 +11,7 @@ public class TestService {
 
     public static void main(String[] args) throws IOException {
 //        CPUService.checkTemp();
-        MemoryService.checkUseageRate();
+//        MemoryService.checkUseageRate();
+        DiskService.checkUseageRate();
     }
 }
