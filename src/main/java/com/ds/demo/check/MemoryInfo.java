@@ -5,9 +5,8 @@ import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
 import org.hyperic.sigar.Swap;
 
-import java.io.File;
-import java.lang.management.ManagementFactory;
-import java.lang.management.OperatingSystemMXBean;
+import java.math.BigDecimal;
+
 
 /**
  * @author Simon
@@ -20,6 +19,22 @@ public class MemoryInfo {
 
     }
 
+    /**
+     *
+     * @return
+     */
+    public static double getUseageRate(){
+        Sigar sigar = new Sigar();
+        Mem mem=null;
+        try {
+           mem= sigar.getMem();
+        } catch (SigarException e) {
+            e.printStackTrace();
+        }
+
+        double memoryUseageRate = new BigDecimal((float)mem.getUsed()/mem.getTotal()).setScale(4, BigDecimal.ROUND_HALF_UP).doubleValue();
+        return memoryUseageRate;
+    }
     /**
      * 内存详情
      * @throws SigarException

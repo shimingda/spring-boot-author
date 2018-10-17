@@ -55,7 +55,7 @@
 		<!-- test -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
+			<artifactId>spring-boot-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<!-- jdbc -->
@@ -107,6 +107,13 @@
 			<artifactId>guava</artifactId>
 			<version>23.0</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/org.hyperic/sigar -->
+		<dependency>
+			<groupId>org.hyperic</groupId>
+			<artifactId>sigar</artifactId>
+			<version>1.6.4</version>
+		</dependency>
+
 	</dependencies>
 	<build>
 		<plugins>

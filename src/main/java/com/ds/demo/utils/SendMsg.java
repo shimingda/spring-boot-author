@@ -24,19 +24,19 @@ public class SendMsg {
         MailSenderInfo mailInfo = new MailSenderInfo();
 
         mailInfo.setToAddress("shimingda@deepsense.cn");       // 设置接受者邮箱地址
-
-        mailInfo.setSubject(level);
+       String subject= level+DateUtil.transform();
+        mailInfo.setSubject(subject);
 
         StringBuilder builder=new StringBuilder();
 //        警告等级
-        builder.append("<h1>警告日期:").append(DateUtil.transform()).append("</h1>");
-        builder.append("<h1>警告等级:").append(level).append("</h1>");
-        builder.append("<h1>警告内容:").append(logContent).append("</h1>");
-        builder.append("<h1>警告位置:").append(location).append("</h1>");
+        builder.append("等级:").append(level).append("\n");
+        builder.append("内容:").append(logContent).append("\n");
+        builder.append("位置:").append(location).append("\n");
         mailInfo.setContent(String.valueOf(builder));
 
-        mailInfo.setContent(String.valueOf(Math.random()));
-        JavaMail.sendHtmlMail(mailInfo,null); // 发送html格式
+//        mailInfo.setContent("请您参加晚会"+String.valueOf(Math.random()));
+//        JavaMail.sendHtmlMail(mailInfo,null); // 发送html格式
+        JavaMail.sendTextMail(mailInfo);
 
     }
 }

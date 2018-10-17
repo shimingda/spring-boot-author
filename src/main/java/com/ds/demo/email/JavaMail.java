@@ -91,13 +91,15 @@ public class JavaMail {
             Message mailMessage = new MimeMessage(sendMailSession);
             // 创建邮件发送者地址
             Address from = new InternetAddress(pro.getProperty("mail.sender.address"));
+            mailMessage.addRecipients(MimeMessage.RecipientType.CC, InternetAddress.parse(pro.getProperty("mail.sender.username")));
+
             // 设置邮件消息的发送者
             mailMessage.setFrom(from);
             // 创建邮件的接收者地址，并设置到邮件消息中
             Address to = new InternetAddress(mailInfo.getToAddress());
             // Message.RecipientType.TO属性表示接收者的类型为TO
             mailMessage.setRecipient(Message.RecipientType.TO, to);
-            // 设置邮件消息的主题
+             // 设置邮件消息的主题
             mailMessage.setSubject(mailInfo.getSubject());
             // 设置邮件消息发送的时间
             mailMessage.setSentDate(new Date());
@@ -138,6 +140,7 @@ public class JavaMail {
             mailMessage.setFrom(from);
             // 创建邮件的接收者地址，并设置到邮件消息中
             Address to = new InternetAddress(mailInfo.getToAddress());
+            mailMessage.addRecipients(MimeMessage.RecipientType.CC, InternetAddress.parse(pro.getProperty("mail.sender.username")));
             // Message.RecipientType.TO属性表示接收者的类型为TO
             mailMessage.setRecipient(Message.RecipientType.TO, to);
             // 设置邮件消息的主题
