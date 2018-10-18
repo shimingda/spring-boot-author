@@ -2,7 +2,6 @@ package com.ds.demo.service;
 
 import com.ds.demo.check.MemoryInfo;
 import com.ds.demo.constant.WarningConstant;
-import com.ds.demo.utils.ExecUtil;
 import com.ds.demo.utils.SendMsg;
 import com.ds.demo.utils.StringUtil;
 import com.ds.demo.utils.SystemUtil;
@@ -35,7 +34,7 @@ public class MemoryService {
          */
         if(useageRate>WarningConstant.MEMORY_ALARM_THRESHOLD_3){
             logger.error("服务器{}，{}，自动关机",ipAddress,content);
-            ExecUtil.execUtil(WarningConstant.SHELL_REBOOT_COMMAND);
+//            ExecUtil.execUtil(WarningConstant.SHELL_REBOOT_COMMAND);
             return ;
         }
 

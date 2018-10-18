@@ -47,7 +47,7 @@
     <orderEntry type="module-library">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Desktop/sigar.jar!/" />
+          <root url="jar://$USER_HOME$/Desktop/新平台/新建文件夹/sigar/sigar.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

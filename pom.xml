@@ -13,14 +13,35 @@
 	<artifactId>spring-boot-actuator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
-	<name>spring-boot-actuator Maven Webapp</name>
-	<url>http://maven.apache.org</url>
+    <!--<repositories>-->
+        <!--<repository>-->
+            <!--<id>central</id>-->
+            <!--<name>Central Repository</name>-->
+            <!--<url> http://mvnrepository.com/</url>-->
+            <!--<layout>default</layout>-->
+            <!--<snapshots>-->
+                <!--<enabled>false</enabled>-->
+            <!--</snapshots>-->
+        <!--</repository>-->
+    <!--</repositories>-->
+	<!--<pluginRepositories>-->
+		<!--<pluginRepository>-->
+			<!--<id>maven-net-cn</id>-->
+			<!--<name>MavenChinaMirror</name>-->
+			<!--<url>http://mvnrepository.com/</url>-->
+			<!--<releases>-->
+				<!--<enabled>true</enabled>-->
+			<!--</releases>-->
+			<!--<snapshots>-->
+				<!--<enabled>false</enabled>-->
+			<!--</snapshots>-->
+		<!--</pluginRepository>-->
+	<!--</pluginRepositories>-->
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
 	</properties>
-
 	<dependencies>
 		<!--监控客户端-->
 		<dependency>
@@ -111,8 +132,11 @@
 		<dependency>
 			<groupId>org.hyperic</groupId>
 			<artifactId>sigar</artifactId>
-			<version>1.6.4</version>
+			<version>1.6.5.132</version>
 		</dependency>
+
+
+
 		<!--sms建网-->
 		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
 		<dependency>

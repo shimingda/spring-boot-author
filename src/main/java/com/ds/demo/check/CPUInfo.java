@@ -7,7 +7,7 @@ import org.hyperic.sigar.CpuPerc;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
 
-import java.text.DecimalFormat;
+import java.math.BigDecimal;
 
 /**
  * @author Simon
@@ -23,9 +23,8 @@ public class CPUInfo {
     public static double getTemp() {
 
         String result = ExecUtil.execUtil(WarningConstant.SHELL_CAT_CPU);
-        DecimalFormat df = new DecimalFormat("#.0");
-        df.format(result);
-        return Double.parseDouble(df.toString());
+        Double temp= Double.parseDouble(result);
+        return   new BigDecimal(temp/1000).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
     }
 
     /**

@@ -2,7 +2,6 @@ package com.ds.demo.service;
 
 import com.ds.demo.check.DiskInfo;
 import com.ds.demo.constant.WarningConstant;
-import com.ds.demo.utils.ExecUtil;
 import com.ds.demo.utils.SendMsg;
 import com.ds.demo.utils.StringUtil;
 import com.ds.demo.utils.SystemUtil;
@@ -49,7 +48,7 @@ public class DiskService {
          */
         if(useageRate>WarningConstant.DISK_ALARM_THRESHOLD_3){
             logger.error("服务器{}，{}，自动关机",ipAddress,content);
-            ExecUtil.execUtil(WarningConstant.SHELL_REBOOT_COMMAND);
+//            ExecUtil.execUtil(WarningConstant.SHELL_REBOOT_COMMAND);
             continue ;
         }
 

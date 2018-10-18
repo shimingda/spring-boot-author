@@ -2,14 +2,12 @@ package com.ds.demo.service;
 
 import com.ds.demo.check.CPUInfo;
 import com.ds.demo.constant.WarningConstant;
-import com.ds.demo.utils.ExecUtil;
 import com.ds.demo.utils.SendMsg;
 import com.ds.demo.utils.StringUtil;
 import com.ds.demo.utils.SystemUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
-
 
 import java.io.IOException;
 
@@ -38,7 +36,7 @@ public class CPUService {
          */
         if(temp>WarningConstant.CPU_TEMPERATURE_THRESHOLD_3){
             logger.error("服务器{}，{}，自动关机",ipAddress,content);
-            ExecUtil.execUtil(WarningConstant.SHELL_REBOOT_COMMAND);
+//            ExecUtil.execUtil(WarningConstant.SHELL_REBOOT_COMMAND);
             return ;
         }
 
