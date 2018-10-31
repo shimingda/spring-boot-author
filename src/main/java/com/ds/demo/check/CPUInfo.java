@@ -1,7 +1,5 @@
 package com.ds.demo.check;
 
-import com.ds.demo.constant.WarningConstant;
-import com.ds.demo.utils.ExecUtil;
 import org.hyperic.sigar.CpuInfo;
 import org.hyperic.sigar.CpuPerc;
 import org.hyperic.sigar.Sigar;
@@ -22,9 +20,14 @@ public class CPUInfo {
      */
     public static double getTemp() {
 
-        String result = ExecUtil.execUtil(WarningConstant.SHELL_CAT_CPU);
+//        String result = ExecUtil.execUtil(WarningConstant.SHELL_CAT_CPU);
+        String result ="555";
         Double temp= Double.parseDouble(result);
         return   new BigDecimal(temp/1000).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+
+
+
+
     }
 
     /**

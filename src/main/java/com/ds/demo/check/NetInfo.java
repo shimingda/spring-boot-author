@@ -29,6 +29,7 @@ public class NetInfo {
                     || NetFlags.NULL_HWADDR.equals(cfg.getHwaddr())) {
                 continue;
             }
+
             System.out.println(cfg.getName() + "IP地址:" + cfg.getAddress());// IP地址
             System.out.println(cfg.getName() + "网关广播地址:" + cfg.getBroadcast());// 网关广播地址
             System.out.println(cfg.getName() + "网卡MAC地址:" + cfg.getHwaddr());// 网卡MAC地址
