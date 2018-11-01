@@ -36,12 +36,12 @@ public class TestCheck {
 //        NetInfo.ethernet();
 //        System.out.println("----------------------------------------------------------------------------------------------");
 
+//        DiskInfo.writeRate();
 
+//        TestCheck testCheck=new TestCheck();
+//        testCheck.get();
 
-        TestCheck testCheck=new TestCheck();
-        testCheck.get();
-
-
+            NetInfo.test();
     }
     public  void get(){
         System.out.println(        metricsEndpoint.listNames());

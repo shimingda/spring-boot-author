@@ -5,6 +5,7 @@ import org.hyperic.sigar.FileSystemUsage;
 import org.hyperic.sigar.Sigar;
 import org.hyperic.sigar.SigarException;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -16,6 +17,54 @@ import java.util.Map;
 public class DiskInfo {
     private DiskInfo(){
 
+    }
+    public static String writeRate(){
+        long startWrite=writeSpeed();
+        System.out.println("startWrite---"+startWrite);
+        long startTime=System.currentTimeMillis();
+        System.out.println("startTime---"+startTime);
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        long endWrite=writeSpeed();
+        System.out.println("endWrite---"+endWrite);
+        long endTime=System.currentTimeMillis();
+        System.out.println("endTime---"+endTime);
+        System.out.println("resultTime---"+(endTime-startTime));
+        System.out.println("resultWrite---"+(endWrite-startWrite));
+
+        double resultTime=  new BigDecimal((endTime-startTime)/1000).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double resultWrite=  new BigDecimal((endWrite-startWrite)/1024/1024).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        double result=  new BigDecimal(resultWrite/resultTime).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("result---"+result);
+        return null;
+    }
+
+    public  static long writeSpeed(){
+        Sigar sigar=new Sigar();
+        FileSystem fslist[]=null;
+        try {
+             fslist= sigar.getFileSystemList();
+        } catch (SigarException e) {
+            e.printStackTrace();
+        }
+        long sum=0;
+        long diskWrites;
+        for (int i = 0; i < fslist.length; i++) {
+            FileSystem fs = fslist[i];
+            FileSystemUsage usage = null;
+            try {
+            usage = sigar.getFileSystemUsage(fs.getDirName());
+            } catch (SigarException e) {
+                continue;
+            }
+             diskWrites= usage.getDiskWriteBytes();
+            System.out.println(diskWrites);
+            sum+=diskWrites;
+        }
+        return sum;
     }
     public static Map<Double,String> getUseageRate(){
         Map<Double,String> map=new HashMap<>();

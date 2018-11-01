@@ -134,9 +134,6 @@
 			<artifactId>sigar</artifactId>
 			<version>1.6.5.132</version>
 		</dependency>
-
-
-
 		<!--sms建网-->
 		<!-- https://mvnrepository.com/artifact/commons-logging/commons-logging -->
 		<dependency>
@@ -168,6 +165,12 @@
 			<groupId>com.aliyun</groupId>
 			<artifactId>aliyun-java-sdk-dysmsapi</artifactId>
 			<version>1.1.0</version>
+		</dependency>
+		<!-- https://mvnrepository.com/artifact/com.github.oshi/oshi-core -->
+		<dependency>
+			<groupId>com.github.oshi</groupId>
+			<artifactId>oshi-core</artifactId>
+			<version>3.5.0</version>
 		</dependency>
 	</dependencies>
 	<build>

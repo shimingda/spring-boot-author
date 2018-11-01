@@ -1,9 +1,6 @@
 package com.ds.demo.check;
 
-import org.hyperic.sigar.NetFlags;
-import org.hyperic.sigar.NetInterfaceConfig;
-import org.hyperic.sigar.Sigar;
-import org.hyperic.sigar.SigarException;
+import org.hyperic.sigar.*;
 
 /**
  * @author Simon
@@ -14,6 +11,51 @@ public class NetInfo {
     private NetInfo(){
 
     }
+    public static void test() throws SigarException {
+        Sigar sigar = new Sigar();
+
+        // 当前机器的正式域名
+        try {
+            System.out.println(sigar.getFQDN());// 即Fully Qualified Domain Name，中文为：全称域名
+        } catch (SigarException e) {
+            e.printStackTrace();
+        }
+
+        String[] netInterfaceList = sigar.getNetInterfaceList();
+
+        // 获取网络流量信息
+        for (int i = 0; i < netInterfaceList.length; i++) {
+            String netInterface = netInterfaceList[i];// 网络接口
+//            System.out.println("netInterface：" + netInterface);
+            NetInterfaceConfig netInterfaceConfig = sigar.getNetInterfaceConfig(netInterface);
+//            System.out.println("Address = " + netInterfaceConfig.getAddress());// IP地址
+//            System.out.println("Netmask = " + netInterfaceConfig.getNetmask());// 子网掩码
+            if ((netInterfaceConfig.getFlags() & 1L) <= 0L) {// 网络装置是否正常启用
+                System.out.println("!IFF_UP...skipping getNetInterfaceStat");
+                continue;
+            }
+            NetInterfaceStat netInterfaceStat = sigar.getNetInterfaceStat(netInterface);
+            System.out.println("netInterfaceStat rxPackets：" + netInterfaceStat.getRxPackets());// 接收的总包裹数
+            System.out.println("netInterfaceStat txPackets：" + netInterfaceStat.getTxPackets());// 发送的总包裹数
+            System.out.println("netInterfaceStat rxBytes：" + netInterfaceStat.getRxBytes());// 接收到的总字节数
+            System.out.println("netInterfaceStat txBytes：" + netInterfaceStat.getTxBytes());// 发送的总字节数
+            System.out.println("netInterfaceStat rxErrors：" + netInterfaceStat.getRxErrors());// 接收到的错误包数
+            System.out.println("netInterfaceStat txErrors：" + netInterfaceStat.getTxErrors());// 发送数据包时的错误数
+            System.out.println("netInterfaceStat rxDropped：" + netInterfaceStat.getRxDropped());// 接收时丢弃的包数
+            System.out.println("netInterfaceStat txDropped：" + netInterfaceStat.getTxDropped());// 发送时丢弃的包数
+            System.out.println("netInterfaceStat rxOverruns：" + netInterfaceStat.getRxOverruns());
+            System.out.println("netInterfaceStat txOverruns：" + netInterfaceStat.getTxOverruns());
+            System.out.println("netInterfaceStat rxFrame：" + netInterfaceStat.getRxFrame());
+            System.out.println("netInterfaceStat txCollisions：" + netInterfaceStat.getTxCollisions());
+            System.out.println("netInterfaceStat txCarrier：" + netInterfaceStat.getTxCarrier());
+            System.out.println("netInterfaceStat speed：" + netInterfaceStat.getSpeed());
+        }
+
+        sigar.close();
+    }
+
+
+
 
     /**
      * 网络详情
