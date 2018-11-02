@@ -23,7 +23,7 @@ public class ODiskInfo {
         long startWrite=writeSpeed();
         long startTime=System.currentTimeMillis();
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -51,7 +51,7 @@ public class ODiskInfo {
         long writeByteSum=0;
 
         for (HWDiskStore disk : diskStores) {
-            boolean readwrite = disk.getReads() > 0 || disk.getWrites() > 0;
+            boolean readwrite = disk.getWrites() > 0;
             if (!readwrite){
                 continue;
             }
@@ -60,6 +60,48 @@ public class ODiskInfo {
 
         }
         return writeByteSum ;
+    }
+    public static String readRate(){
+
+        long startRead=readSpeed();
+        long startTime=System.currentTimeMillis();
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        long endRead=readSpeed();
+        long endTime=System.currentTimeMillis();
+
+        double resultTime=  new BigDecimal((endTime-startTime)/1000).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("resultTime---"+resultTime);
+        double resultRead=  new BigDecimal((endRead-startRead)/1024).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("resultRead---"+resultRead);
+        double result=  new BigDecimal(resultRead/resultTime).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("result---"+result);
+        DecimalFormat format = new DecimalFormat(" #KB/s");
+        String finalReadRate=format.format(result);
+        System.out.println("finalWriteRate---"+finalReadRate);
+        return finalReadRate;
+    }
+    public  static long readSpeed(){
+        SystemInfo si = new SystemInfo();
+        HardwareAbstractionLayer hal = si.getHardware();
+        HWDiskStore[] diskStores=hal.getDiskStores();
+        System.out.println("Disks:");
+        long readByte=0;
+        long readByteSum=0;
+
+        for (HWDiskStore disk : diskStores) {
+            boolean readwrite = disk.getReads() > 0 ;
+            if (!readwrite){
+                continue;
+            }
+            readByte= disk.getReadBytes();
+            readByteSum+=readByte;
+
+        }
+        return readByteSum ;
     }
     public static void printDisks(HWDiskStore[] diskStores) {
         System.out.println("Disks:");

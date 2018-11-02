@@ -2,6 +2,9 @@ package com.ds.demo.oshi;
 
 import oshi.hardware.UsbDevice;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  *  外接设备
  * @author Simon
@@ -10,11 +13,14 @@ import oshi.hardware.UsbDevice;
  **/
 public class OUsbDevicesInfo {
 
-    public static void printUsbDevices(UsbDevice[] usbDevices) {
-        System.out.println("USB Devices:");
+    private OUsbDevicesInfo(){}
+
+    public static Map <String,Object> info(UsbDevice[] usbDevices) {
+        Map <String,Object> info=new HashMap<>();
         for (UsbDevice usbDevice : usbDevices) {
-            System.out.println(usbDevice.toString());
+            info.put(usbDevice.getName(),usbDevice.toString());
         }
+    return info;
     }
 
 }

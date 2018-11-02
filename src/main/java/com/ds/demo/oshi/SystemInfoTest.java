@@ -1,6 +1,10 @@
 package com.ds.demo.oshi;
 
 
+import oshi.SystemInfo;
+import oshi.hardware.HardwareAbstractionLayer;
+import oshi.software.os.OperatingSystem;
+
 /**
  * @author Simon
  * @create 2018-11-01 14:43
@@ -11,9 +15,9 @@ public class SystemInfoTest {
     public static void main(String[] args) {
 
 //        LOG.info("Initializing System...");
-//        SystemInfo si = new SystemInfo();
-//        HardwareAbstractionLayer hal = si.getHardware();
-//        OperatingSystem os = si.getOperatingSystem();
+        SystemInfo si = new SystemInfo();
+        HardwareAbstractionLayer hal = si.getHardware();
+        OperatingSystem os = si.getOperatingSystem();
 
 
 //        LOG.info("Checking computer system...");
@@ -58,8 +62,9 @@ public class SystemInfoTest {
 
         // hardware: USB devices
 //        LOG.info("Checking USB Devices...");
-//        OUsbDevicesInfo.printUsbDevices(hal.getUsbDevices(true));
-        ODiskInfo.writeRate();
+        OUsbDevicesInfo.info(hal.getUsbDevices(true));
+//        ODiskInfo.writeRate();
 //        OSensorsInfo.getCpuTemp();
+//        ODiskInfo.readRate();
     }
 }
