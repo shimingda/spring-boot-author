@@ -23,6 +23,7 @@ public class OFileSystemInfo {
         for (OSFileStore fs : fsArray) {
             long usable = fs.getUsableSpace();
             long total = fs.getTotalSpace();
+
             System.out.format(
                     " %s (%s) [%s] %s of %s free (%.1f%%) is %s "
                             + (fs.getLogicalVolume() != null && fs.getLogicalVolume().length() > 0 ? "[%s]" : "%s")
