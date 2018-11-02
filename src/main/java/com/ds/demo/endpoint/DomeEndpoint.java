@@ -17,9 +17,9 @@ import org.springframework.stereotype.Component;
  */
 @Endpoint(id = "get-time")  
 @Component 
-public class GetTime {
+public class DomeEndpoint {
 	private final Map<String,Object> message =(Map<String, Object>) new HashMap();
-    private GetTime(){
+    private DomeEndpoint(){
 	 this.message.put("当前时间", new Date());
 	 this.message.put("我是", "Simon");
 	 this.message.put("111", "222");

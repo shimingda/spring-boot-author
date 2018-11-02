@@ -59,7 +59,7 @@ public class SystemInfoTest {
         // hardware: USB devices
 //        LOG.info("Checking USB Devices...");
 //        OUsbDevicesInfo.printUsbDevices(hal.getUsbDevices(true));
-//        ODiskInfo.writeRate();
-        OSensorsInfo.getCpuTemp();
+        ODiskInfo.writeRate();
+//        OSensorsInfo.getCpuTemp();
     }
 }

@@ -7,6 +7,7 @@ import oshi.hardware.HardwareAbstractionLayer;
 import oshi.util.FormatUtil;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
 
 /**
  *  磁盘信息详情
@@ -18,27 +19,27 @@ public class ODiskInfo {
     private ODiskInfo(){}
 
     public static String writeRate(){
+
         long startWrite=writeSpeed();
-        System.out.println("startWrite---"+startWrite);
         long startTime=System.currentTimeMillis();
-        System.out.println("startTime---"+startTime);
         try {
-            Thread.sleep(5000);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
         long endWrite=writeSpeed();
-        System.out.println("endWrite---"+endWrite);
         long endTime=System.currentTimeMillis();
-        System.out.println("endTime---"+endTime);
-        System.out.println("resultTime---"+(endTime-startTime));
-        System.out.println("resultWrite---"+(endWrite-startWrite));
 
         double resultTime=  new BigDecimal((endTime-startTime)/1000).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
-        double resultWrite=  new BigDecimal((endWrite-startWrite)/1024/1024).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("resultTime---"+resultTime);
+        double resultWrite=  new BigDecimal((endWrite-startWrite)/1024).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
+        System.out.println("resultWrite---"+resultWrite);
         double result=  new BigDecimal(resultWrite/resultTime).setScale(2, BigDecimal.ROUND_HALF_UP).doubleValue();
         System.out.println("result---"+result);
-        return null;
+        DecimalFormat format = new DecimalFormat(" #KB/s");
+        String finalWriteRate=format.format(result);
+        System.out.println("finalWriteRate---"+finalWriteRate);
+        return finalWriteRate;
     }
 
     public  static long writeSpeed(){

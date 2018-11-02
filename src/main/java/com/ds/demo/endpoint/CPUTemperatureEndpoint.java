@@ -16,17 +16,18 @@ import java.util.Map;
 @Endpoint(id = "cpu-temperature")
 @Component
 public class CPUTemperatureEndpoint {
+    private CPUTemperatureEndpoint(){
+    }
 
     private final Map<String,Object> message =(Map<String, Object>) new HashMap();
 
-    private CPUTemperatureEndpoint(){
-        OSensorsInfo sensorsInfo=new OSensorsInfo();
-        String temp=sensorsInfo.getCpuTemp();
-        this.message.put("cpu-temperature",temp);
-    }
+
 
     @ReadOperation
     public  Map<String,Object> getAll() {
+        OSensorsInfo sensorsInfo=new OSensorsInfo();
+        String temp=sensorsInfo.getCpuTemp();
+        this.message.put("cpu-temperature",temp);
         return message;
     }
 
